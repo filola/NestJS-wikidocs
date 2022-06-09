@@ -1,7 +1,7 @@
 {
   "name": "project-name",
   "version": "0.0.1",
-  "description": "",
+  "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
@@ -68,5 +68,17 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/filola/NestJS-wikidocs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/filola/NestJS-wikidocs/issues"
+  },
+  "homepage": "https://github.com/filola/NestJS-wikidocs#readme"
 }
