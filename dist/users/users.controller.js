@@ -14,34 +14,24 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
-const users_service_1 = require("./users.service");
 const create_user_dto_1 = require("./dto/create-user.dto");
-const update_user_dto_1 = require("./dto/update-user.dto");
+const user_login_dto_1 = require("./dto/user-login.dto");
+const verify_email_dto_1 = require("./dto/verify-email.dto");
 let UsersController = class UsersController {
-    constructor(usersService) {
-        this.usersService = usersService;
+    async createUser(dto) {
+        console.log(dto);
     }
-    create(createUserDto) {
-        return this.usersService.create(createUserDto);
+    async verifyEmail(dto) {
+        console.log(dto);
+        return;
     }
-    findAll(res) {
-        const users = this.usersService.findAll();
-        return res.status(200).send(users);
+    async login(dto) {
+        console.log(dto);
+        return;
     }
-    findOne(id) {
-        if (+id < 1) {
-            throw new common_1.BadRequestException('id lower then 0');
-        }
-        return this.usersService.findOne(+id);
-    }
-    update(id, updateUserDto) {
-        return this.usersService.update(+id, updateUserDto);
-    }
-    remove(id) {
-        return this.usersService.remove(+id);
-    }
-    deleteUserMemo(userId, memoId) {
-        return `userId: ${userId}, memoId: ${memoId}`;
+    async getUserInfo(userId) {
+        console.log(userId);
+        return;
     }
 };
 __decorate([
@@ -49,50 +39,31 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "create", null);
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Res)()),
+    (0, common_1.Post)('/email-verify'),
+    __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "findAll", null);
+    __metadata("design:paramtypes", [verify_email_dto_1.VerifyEmailDto]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "verifyEmail", null);
 __decorate([
-    (0, common_1.Header)('Custom', 'Test Header'),
-    (0, common_1.Get)(':id'),
+    (0, common_1.Post)('/login'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_login_dto_1.UserLoginDto]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "login", null);
+__decorate([
+    (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.HttpCode)(202),
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_user_dto_1.UpdateUserDto]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "remove", null);
-__decorate([
-    (0, common_1.Delete)(':userId/memo/:memoId'),
-    __param(0, (0, common_1.Param)('userId')),
-    __param(1, (0, common_1.Param)('memoId')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "deleteUserMemo", null);
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getUserInfo", null);
 UsersController = __decorate([
-    (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    (0, common_1.Controller)('users')
 ], UsersController);
 exports.UsersController = UsersController;
 //# sourceMappingURL=users.controller.js.map
