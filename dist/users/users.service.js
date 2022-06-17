@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersService = void 0;
+exports.ServiceB = exports.ServiceA = exports.BaseService = exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 let UsersService = class UsersService {
     create(createUserDto) {
@@ -29,4 +29,34 @@ UsersService = __decorate([
     (0, common_1.Injectable)()
 ], UsersService);
 exports.UsersService = UsersService;
+class BaseService {
+    constructor(serviceA) {
+        this.serviceA = serviceA;
+    }
+    getHello() {
+        return 'Hello World BASE!';
+    }
+    doSomeFuncFromA() {
+        return this.serviceA.getHello();
+    }
+}
+exports.BaseService = BaseService;
+let ServiceA = class ServiceA {
+    getHello() {
+        return 'Hello World A!';
+    }
+};
+ServiceA = __decorate([
+    (0, common_1.Injectable)()
+], ServiceA);
+exports.ServiceA = ServiceA;
+let ServiceB = class ServiceB extends BaseService {
+    getHello() {
+        return this.doSomeFuncFromA();
+    }
+};
+ServiceB = __decorate([
+    (0, common_1.Injectable)()
+], ServiceB);
+exports.ServiceB = ServiceB;
 //# sourceMappingURL=users.service.js.map

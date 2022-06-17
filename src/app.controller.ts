@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('/serviceB')
   getHello(@Req() req: Request): string {
     console.log(req);
     return this.appService.getHello();
