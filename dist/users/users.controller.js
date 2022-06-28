@@ -22,9 +22,8 @@ let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
-    async createUser(dto) {
-        const { name, email, password } = dto;
-        await this.usersService.createUser(name, email, password);
+    async createUser(crateUserDto) {
+        await this.usersService.create(createUserDto);
     }
     async verifyEmail(dto) {
         console.log(dto);

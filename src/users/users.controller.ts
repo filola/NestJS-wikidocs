@@ -76,9 +76,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 	
   @Post()
-  async createUser(@Body() dto: CreateUserDto): Promise<void> {
-    const { name, email, password } = dto;
-	  await this.usersService.createUser(name, email, password);
+  async createUser(@Body() crateUserDto: CreateUserDto): Promise<void> {
+    await this.usersService.create(createUserDto);
   }
 
   @Post('/email-verify')

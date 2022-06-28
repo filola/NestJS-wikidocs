@@ -4,9 +4,9 @@ export class CreateUserDto {
 	// email: string;
 	
 	// V2
-	readonly name: string;
-	readonly email: string;
-	readonly password: string;
+	name: string;
+	email: string;
+	password: string;
 }
 
 export class GetUsersDto {

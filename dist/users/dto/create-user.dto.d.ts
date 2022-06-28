@@ -1,7 +1,7 @@
 export declare class CreateUserDto {
-    readonly name: string;
-    readonly email: string;
-    readonly password: string;
+    name: string;
+    email: string;
+    password: string;
 }
 export declare class GetUsersDto {
     offset: number;
